@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers;
  * Description :MainActivity的presenter
  */
 
-public class MainPresenter implements Contract.Presenter{
+public class MainPresenter implements Contract.Presenter {
     private Contract.MainView mView;
     private GetOneUseCase getOneUseCase;
 
@@ -21,7 +21,6 @@ public class MainPresenter implements Contract.Presenter{
         this.mView = view;
         getOneUseCase = new GetOneUseCase(new AllUseCaseRepository());
     }
-
 
     @Override
     public void onError() {
@@ -36,7 +35,7 @@ public class MainPresenter implements Contract.Presenter{
     @Override
     public void getData(int page) {
         getOneUseCase.executeUseCase(
-                new GetOneUseCase.RequestValues("41446", "20dd11eedac1404897d01af26d501373",page))
+                new GetOneUseCase.RequestValues("41446", "20dd11eedac1404897d01af26d501373", page))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<ResponseModelOne>() {
