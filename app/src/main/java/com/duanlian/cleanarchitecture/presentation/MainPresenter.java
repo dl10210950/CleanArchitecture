@@ -34,8 +34,8 @@ public class MainPresenter implements Contract.Presenter {
 
     @Override
     public void getData(int page) {
-        getOneUseCase.executeUseCase(
-                new GetOneUseCase.RequestValues("41446", "20dd11eedac1404897d01af26d501373", page))
+        GetOneUseCase.RequestValues requestValues = new GetOneUseCase.RequestValues("41446", "20dd11eedac1404897d01af26d501373", page);
+        getOneUseCase.executeUseCase(requestValues)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<ResponseModelOne>() {
